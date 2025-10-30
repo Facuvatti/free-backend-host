@@ -3,6 +3,7 @@ Registrate en Cloudflare https://dash.cloudflare.com/sign-up
 ## Requerimientos
 - Nodejs
 - Wrangler (paquete de node)
+
 Se instalan automaticamente con el `setup.sh` (linux) o `setup.ps1` (windows)
 > Si no lo queres ejecutar automaticamente, anda al `requirements.md` de este repo y lo podes hacer manualmente
 ## Clonar el repositorio y ejecutar el setup
