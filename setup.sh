@@ -64,7 +64,7 @@ sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" package.json
 # Sustituir en package-lock.json
 sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" package-lock.json          
 
-echo "Creando base de datos en D1..."
+echo "Creando base de datos en D1"
 npx wrangler d1 create database --binding DB
 # --- Pasos Finales ---
 echo ""
@@ -73,4 +73,6 @@ echo "Para iniciar el proyecto:"
 echo "Desarrollo local: npm run dev"
 echo "Hostear en Cloudflare: npm run deploy"
 echo ""
+rm requirements.md
+rm setup.ps1
 rm readme.md

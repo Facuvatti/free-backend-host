@@ -10,24 +10,24 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-# 2. Instalar Volta (Alternativa a nvm en Windows)
-Write-Host "⚙️ Verificando e instalando Volta (gestor de versiones de Node.js)..."
-
-if (Get-Command volta -ErrorAction SilentlyContinue) {
-    Write-Host "✅ Volta ya esta instalado."
-} else {
-    Write-Host "Volta no encontrado. Instalando via winget..."
-    try {
-        winget install Volta.Volta -h
-        Write-Host "✅ Volta instalado exitosamente. Reinicia la terminal si tienes problemas."
-    } catch {
-        Write-Host "❌ Error al instalar Volta con winget."
-        exit 1
-    }
-}
 if ((node -v) -match "v24") {
     Write-Host "✅ Node.js v24 ya estaba instalado y establecido como predeterminado."
 } else {
+    # 2. Instalar Volta (Alternativa a nvm en Windows)
+    Write-Host "⚙️ Verificando e instalando Volta (gestor de versiones de Node.js)..."
+
+    if (Get-Command volta -ErrorAction SilentlyContinue) {
+        Write-Host "✅ Volta ya esta instalado."
+    } else {
+        Write-Host "Volta no encontrado. Instalando via winget..."
+        try {
+            winget install Volta.Volta -h
+            Write-Host "✅ Volta instalado exitosamente. Reinicia la terminal si tienes problemas."
+        } catch {
+            Write-Host "❌ Error al instalar Volta con winget."
+            exit 1
+        }
+    }
     # 3. Instalar la version 24 de Node.js
     Write-Host "Instalando Node.js v24..."
     volta install node@24
@@ -59,16 +59,8 @@ $RepoName = (Split-Path (Get-Location) -Leaf)
 # Sustituir en package-lock.json
 (Get-Content -Path .\package-lock.json) -replace $PLACEHOLDER, $RepoName | Set-Content -Path .\package-lock.json
 
-# Ejecutar el comando de inicializacion de Wrangler. Este paso requerira que el usuario interactue para pegar la URL
-Write-Host ""
-Write-Host "========================================================================="
-Write-Host "Configuracion Interactiva de Wrangler"
-Write-Host "1. Responde 'y' a la pregunta 'Ok to proceed?'"
-Write-Host "2. Selecciona 'Template from a GitHub repo' usando las flechas y pulsa Enter."
-Write-Host "3. Pega la URL de la plantilla: https://github.com/Facuvatti/free-backend-host"
-Write-Host "========================================================================="
-Write-Host ""
-npx wrangler init "$RepoName"
+# Creando la base de datos en D1
+
 npx wrangler d1 create database --binding DB
 Write-Host ""
 Write-Host "🎉 ¡Configuracion exitosa!"
@@ -76,3 +68,7 @@ Write-Host "Para iniciar el proyecto:"
 Write-Host "Desarrollo local: npm run dev"
 Write-Host "Hostear en Cloudflare: npm run deploy"
 Write-Host ""
+Remove-Item -Path requirements.md
+Remove-Item -Path setup.sh
+Remove-Item -Path readme.md
+Remove-Item -Path setup.ps1
