@@ -1,69 +1,33 @@
 # Hostea tu backend/API de javascript gratis para tu portafolio
+Registrate en Cloudflare https://dash.cloudflare.com/sign-up
 ## Requerimientos
-### Node.js
-#### Con Linux o macOS
+- Nodejs
+- Wrangler (paquete de node)
+Se instalan automaticamente con el `setup.sh` (linux) o `setup.ps1` (windows)
+> Si no lo queres ejecutar automaticamente, anda al `requirements.md` de este repo y lo podes hacer manualmente
+## Clonar el repositorio y ejecutar el setup
 ```bash
-# Descargar e instala nvm (es para gestionar e instalar las versiones de Node):
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-# en lugar de reiniciar la shell
-\. "$HOME/.nvm/nvm.sh"
-# Descargar e instalar Node.js:
-nvm install 24 # O la version mas nueva cuando estes viendo esto
+$ git clone https://github.com/Facuvatti/free-backend-host example
+Cloning into 'example'...
+remote: Enumerating objects: 47, done.
+remote: Counting objects: 100% (47/47), done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 47 (delta 14), reused 38 (delta 9), pack-reused 0 (from 0)
+Receiving objects: 100% (47/47), 38.68 KiB | 943.00 KiB/s, done.
+Resolving deltas: 100% (14/14), done.
+$ cd example
+$ chmod +x setup.sh
+$ ./setup.sh
 ```
-#### Con Windows
-```Powershell
-# En la mayoría de los sistemas Unix, incluyendo macOS, puedes instalar con un solo comando:
-winget install Volta.Volta # Es parecido a nvm
-# Descarga e instala Node.js:
-volta install node@24
-# Verificar la version y si se instalo correctamente:
-node -v
-```
-### Wrangler (de cloudflare)
-```bash
-$ npx wrangler # 'npx' es un ejecutor de paquetes de Node
-Need to install the following packages:
-wrangler@4.45.2
-Ok to proceed? (y) 
-$ y # Respondes que si
-```
-> Aparece una lista de comandos, sugiero revisarlos
+> En vez de 'example' pone el nombre de tu proyecto
 
-## Configuración del entorno
-
-### Inicializar el proyecto
+## 
 ```bash
-$ npx wrangler init [nombre]
-Ok to proceed? (y)
-$ y 
-```
-### Elegir plantilla
-```bash
-╰ What would you like to start with?
-  ○ Hello World example
-  ○ Framework Starter
-  ○ Application Starter
-  ● Template from a GitHub repo
-  ◁ Go back
-```
-> Navegá con <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> la opción marcada con "●", y pulsá <kbd>Enter</kbd>
-### Pegar URL del repositorio (plantilla)
-`What's the url of git repo containing the template you'd like to use?`
-```
-https://github.com/Facuvatti/free-backend-host
-```
-> Pegalo con <kbd>Ctrl</kbd>+*<kbd>Shift</kbd>*+<kbd>v</kbd>
-> <kbd>Enter</kbd>
-
-## Iniciar el proyecto 
-### Desarrollo local
-```bash
-$ npm run dev
+$ npm run dev # Para desarrollo local
 # Se despliega en el puerto 8787 http://localhost:8787/ 
 ```
-### Hostear con Cloudflare
 ```bash
-$ npm run deploy
+$ npm run deploy # Para hostear en cloudflare
 # Podrás acceder en un dominio como: https://[proyecto].[usuario].workers.dev/ 
 ```
 # Recursos adicionales

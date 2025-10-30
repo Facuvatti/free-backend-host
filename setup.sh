@@ -63,17 +63,8 @@ sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" wrangler.jsonc
 sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" package.json
 # Sustituir en package-lock.json
 sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" package-lock.json          
-# Sustitución del Nombre de la DB
-sed -i "s/DB_NAME/${{ REPO_NAME }}/g" wrangler.jsonc
 
-echo ""
-echo "========================================================================="
-echo "Configuracion Interactiva de Wrangler"
-echo "1. Selecciona 'Template from a GitHub repo' usando las flechas y pulsa Enter."
-echo "2. Pega la URL de tu plantilla: https://github.com/Facuvatti/free-backend-host"
-echo "========================================================================="
-echo ""
-npx wrangler init "$REPO_NAME"
+echo "Creando base de datos en D1..."
 npx wrangler d1 create database --binding DB
 # --- Pasos Finales ---
 echo ""
