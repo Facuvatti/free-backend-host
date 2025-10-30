@@ -40,6 +40,15 @@ Cambiar `YOUR-PROJECT-NAME` por el nombre de tu repo.
 ```bash
 $ npx wrangler d1 create database --binding DB
 ```
+## Agregar la base de datos al wrangler.jsonc
+```json
+"d1_databases": [
+    {
+        "binding": "DB",
+        "database_name": "database",
+    }
+]
+```
 ## Iniciar el proyecto 
 ### Desarrollo local
 ```bash
