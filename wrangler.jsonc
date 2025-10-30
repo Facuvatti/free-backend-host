@@ -11,8 +11,7 @@
   "d1_databases": [
     {
       "binding": "DB", // Nombre de la conexión en tu worker (el index.js) ej: const db = env.DB
-      "database_name": "DB_NAME", // Nombre de la base de datos
-	  "database_id": "DB_ID" // Este es el ID que se debe generar
+      "database_name": "database", // Nombre de la base de datos
     }
   ]
 	/**

@@ -50,17 +50,26 @@ Write-Host "🚀 Inicializando la configuracion de Wrangler con la plantilla..."
 # Definir el nombre del repositorio actual (directorio)
 $RepoName = (Split-Path (Get-Location) -Leaf)
 
+# Sustituir en wrangler.jsonc (Nombre del Proyecto/Repo)
+(Get-Content -Path .\wrangler.jsonc) -replace $PLACEHOLDER, $RepoName | Set-Content -Path .\wrangler.jsonc
+
+# Sustituir en package.json
+(Get-Content -Path .\package.json) -replace $PLACEHOLDER, $RepoName | Set-Content -Path .\package.json
+
+# Sustituir en package-lock.json
+(Get-Content -Path .\package-lock.json) -replace $PLACEHOLDER, $RepoName | Set-Content -Path .\package-lock.json
+
 # Ejecutar el comando de inicializacion de Wrangler. Este paso requerira que el usuario interactue para pegar la URL
 Write-Host ""
 Write-Host "========================================================================="
 Write-Host "Configuracion Interactiva de Wrangler"
-Write-Host "1. Selecciona 'Template from a GitHub repo' usando las flechas y pulsa Enter."
+Write-Host "1. Responde 'y' a la pregunta 'Ok to proceed?'"
+Write-Host "2. Selecciona 'Template from a GitHub repo' usando las flechas y pulsa Enter."
 Write-Host "3. Pega la URL de la plantilla: https://github.com/Facuvatti/free-backend-host"
 Write-Host "========================================================================="
 Write-Host ""
-
-npx wrangler init "$RepoName" -y 
-
+npx wrangler init "$RepoName"
+npx wrangler d1 create database --binding DB
 Write-Host ""
 Write-Host "🎉 ¡Configuracion exitosa!"
 Write-Host "Para iniciar el proyecto:"

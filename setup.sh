@@ -54,6 +54,17 @@ npx install wrangler
 echo "🚀 Inicializando la configuracion de Wrangler con la plantilla..."
 
 REPO_NAME=$(basename "$(pwd)")
+PLACEHOLDER="YOUR-PROJECT-NAME"
+
+# Sustituir en wrangler.jsonc
+sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" wrangler.jsonc
+
+# Sustituir en package.json
+sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" package.json
+# Sustituir en package-lock.json
+sed -i "s/$PLACEHOLDER/${{ REPO_NAME }}/g" package-lock.json          
+# Sustitución del Nombre de la DB
+sed -i "s/DB_NAME/${{ REPO_NAME }}/g" wrangler.jsonc
 
 echo ""
 echo "========================================================================="
@@ -63,7 +74,7 @@ echo "2. Pega la URL de tu plantilla: https://github.com/Facuvatti/free-backend-
 echo "========================================================================="
 echo ""
 npx wrangler init "$REPO_NAME"
-
+npx wrangler d1 create database --binding DB
 # --- Pasos Finales ---
 echo ""
 echo "🎉 ¡Configuracion exitosa!"
@@ -71,3 +82,4 @@ echo "Para iniciar el proyecto:"
 echo "Desarrollo local: npm run dev"
 echo "Hostear en Cloudflare: npm run deploy"
 echo ""
+rm readme.md
