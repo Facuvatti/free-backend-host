@@ -28,6 +28,11 @@ Ok to proceed? (y)
 $ y # Respondes que si
 ```
 > Aparece una lista de comandos, sugiero revisarlos
+## (Opcional) Librerias de la plantilla
+```bash
+$ npm install express cors morgan
+```
+> Si no los vas a usar no hacen falta.
 ## Reemplazar nombre de tu proyecto
 En los archivos "wrangler.jsonc", "package-lock.json", "package.json"
 Cambiar `YOUR-PROJECT-NAME` por el nombre de tu repo.
