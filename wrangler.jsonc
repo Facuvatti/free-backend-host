@@ -1,42 +1,41 @@
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "free-backend-host",
+	"name": "YOUR-PROJECT-NAME",
 	"main": "src/index.js",
 	"compatibility_date": "2025-10-29",
 	"observability": {
-		"enabled": true
-	}
+		"enabled": true,
+		"head_sampling_rate" : 1
+	},
+  "d1_databases": [
+    {
+      "binding": "DB", // Nombre de la conexión en tu worker (el index.js) ej: const db = env.DB
+      "database_name": "DB_NAME", // Nombre de la base de datos
+	  "database_id": "DB_ID" // Este es el ID que se debe generar
+    }
+  ]
 	/**
-	 * Smart Placement
+	 * Colocacion inteligente
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
 	 */
 	// "placement": { "mode": "smart" }
 	/**
-	 * Bindings
-	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
-	 * databases, object storage, AI inference, real-time communication and more.
-	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
-	 */
 	/**
-	 * Environment Variables
+	 * Variables de entorno
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 */
-	// "vars": { "MY_VARIABLE": "production_value" }
+	// "vars": { "Nombre": "Valor" }
 	/**
-	 * Note: Use secrets to store sensitive data.
+	 * Note: Usar secretos para almacenar datos sensibles
 	 * https://developers.cloudflare.com/workers/configuration/secrets/
 	 */
 	/**
-	 * Static Assets
+	 * Activos estaticos 
 	 * https://developers.cloudflare.com/workers/static-assets/binding/
 	 */
 	// "assets": { "directory": "./public/", "binding": "ASSETS" }
 	/**
-	 * Service Bindings (communicate between multiple Workers)
+	 * Conexiones de servicio (comunicarse con otros workers)
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
 	 */
 	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]

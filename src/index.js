@@ -1,15 +1,19 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import { httpServerHandler } from 'cloudflare:node';  // Esta linea es importante ya que nos permite importar las librerias como express, cors, morgan, etc.
 
-export default {
-	async fetch(request, env, ctx) {
-		return new Response('Hello World!');
-	},
-};
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+// Esto se conecta con la base de datos "D1" (SQLite) que nos provee cloudflare 
+const db = env.abc; // "abc" es solo un ejemplo, pero tiene que ser el nombre del binding que estableciste en wrangler.jsonc
+const app = express();
+
+app.use(cors());
+app.use(morgan('dev'));
+
+// Endpoints 
+app.get('/', (req, res) => {
+	res.send('Hola mundo!');
+})
+
+app.listen(3000);
+export default httpServerHandler({ port: 3000 }); // Esta linea es importante para conectarlo con cloudflare

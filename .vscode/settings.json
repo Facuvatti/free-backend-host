@@ -1,5 +1,6 @@
+// Esto es importante para que se reconozca el archivo de configuracion de wrangler
 {
 	"files.associations": {
 		"wrangler.json": "jsonc"
 	}
-}
+} 
