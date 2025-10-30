@@ -10,12 +10,12 @@ Se instalan automaticamente con el `setup.sh` (linux) o `setup.ps1` (windows)
 ```bash
 git clone https://github.com/Facuvatti/free-backend-host example
 ```
-Cloning into 'example'...
-remote: Enumerating objects: 47, done.
-remote: Counting objects: 100% (47/47), done.
-remote: Compressing objects: 100% (30/30), done.
-remote: Total 47 (delta 14), reused 38 (delta 9), pack-reused 0 (from 0)
-Receiving objects: 100% (47/47), 38.68 KiB | 943.00 KiB/s, done.
+Cloning into 'example'...<br>
+remote: Enumerating objects: 47, done.<br>
+remote: Counting objects: 100% (47/47), done.<br>
+remote: Compressing objects: 100% (30/30), done.<br>
+remote: Total 47 (delta 14), reused 38 (delta 9), pack-reused 0 (from 0)<br>
+Receiving objects: 100% (47/47), 38.68 KiB | 943.00 KiB/s, done.<br>
 Resolving deltas: 100% (14/14), done.
 ```bash
 cd example
