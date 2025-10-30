@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 // Esto se conecta con la base de datos "D1" (SQLite) que nos provee cloudflare 
-const db = env.abc; // "abc" es solo un ejemplo, pero tiene que ser el nombre del binding que estableciste en wrangler.jsonc
+const db = process.env.DB; // "DB" es solo un ejemplo, pero tiene que ser el nombre del binding que estableciste en wrangler.jsonc y el que se creo con el comando del setup
 const app = express();
 
 app.use(cors());
